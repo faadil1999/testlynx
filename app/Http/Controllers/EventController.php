@@ -64,7 +64,6 @@ class EventController extends Controller
 
     public function scopeDate(Request $request)
     {
-        
         $evenements = Evenement::dateRange($request)->get();
 
         return Inertia::render('Events/Index',['evenements'=> $evenements]);

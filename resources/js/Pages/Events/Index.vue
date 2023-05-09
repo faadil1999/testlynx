@@ -8,12 +8,14 @@ const props = defineProps(['evenements']);
 
 <template>
     <app-layout>
-        <template slot="header">
-            Liste des evenements
+        <template #calendar>
+            
+                <DateRangePicker></DateRangePicker>
+         
         </template>
         <div class="bg-green-200 text-green-500 p-3" v-if="$page.props.flash.success"> {{ $page.props.flash.success }}</div>
         <h1 class="px-4">Events</h1>
-        <DateRangePicker></DateRangePicker>
+        
         <div class="py-6" v-for="evenement in this.evenements" v-bind:key="evenement.id">
             <div class="mx-8 bg-white rounded shadow p-4">
                 <div class="text-4xl" >{{ evenement.title }}</div>

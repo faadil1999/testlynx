@@ -287,6 +287,12 @@ const logout = () => {
                 </div>
             </header>
 
+            <header v-if="$slots.calendar" class="bg-white shadow">
+                <div class="my-auto mx-auto pb-5 px-4">
+                    <slot name="calendar" />
+                </div>
+            </header>
+
             <!-- Page Content -->
             <main>
                 <slot />
