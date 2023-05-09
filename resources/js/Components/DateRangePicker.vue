@@ -25,6 +25,7 @@ const form = reactive({
     range_start : null,
     range_end : null
 }) 
+
 function getDecal(month)
 {
     var decal = [];
@@ -54,12 +55,27 @@ function isEnd(day , month)
     return  instant === form.range_end
 }
 
-function submit(){
+function isBetween(day , month)
+{
+    var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
+    return moment(instant).isBetween(form.range_start, form.range_end , undefined ,[])
+}
 
-  
- 
+function addStartDate(day , month){
+    var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
+    form.range_start = instant
+}
+
+function addEndDate(day , month){
+    var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
+    form.range_end = instant
+}
+
+
+function submit(){
+   
     var arrayRange = [ form.range_start , form.range_end ] 
-    router.post(route('evenement.scope'), arrayRange )
+    router.get(route('evenement.scope'), arrayRange )
  
 }
 
@@ -82,8 +98,11 @@ function submit(){
                         <div v-for="dy in getDecal(month)" :key="dy">
                             <a href="" class="text-red-200">{{ dy}}</a>
                         </div>
-                        <div v-for="dy in getDaysInMonth(month)" :key="dy">
-                            <a href="" :class="[isStart(dy,month) ? 'bg-green-700 rounded-xl px-1' : isEnd(dy,month) ? 'bg-yellow-700 rounded-xl px-1' :'']"  >{{ dy }}</a>
+                        <div v-for="dy in getDaysInMonth(month)"  :key="dy">
+                            <a href="#" v-on:click="addEndDate(dy,month)" v-on:dblclick="addStartDate(dy, month)"
+                                             :class="[isStart(dy,month) ? 'bg-green-700 rounded-xl px-1' :
+                                             isEnd(dy,month) ? 'bg-yellow-200 rounded-xl px-1' :
+                                            isBetween(dy,month) ?'bg-yellow-700 rounded-xl px-1' : '']"  >{{ dy }}</a>
                         </div>
                        
                     </div>

@@ -36,9 +36,9 @@ Route::middleware([
 
     Route::get('/events',[EventController::class,'index'] )->name("evenements.index");
     Route::get('/event/{id}',[EventController::class,'show'] )->name("evenement.show");
-    Route::post('/event',[EventController::class,'store'] )->name("evenement.show");
+    Route::post('/event',[EventController::class,'store'] )->name("evenement.store");
     Route::get('event/edit/{id}',[EventController::class,'edit'])->name("evenement.edit");
     Route::put('event/edit/{id}',[EventController::class,'update'])->name("evenement.update");
-    Route::post('/events/scope',[EventController::class, 'scopeDate'])->name("evenement.scope");
+    Route::get('/events/scope',[EventController::class, 'scopeDate'])->name("evenement.scope");
     Route::delete('event/{id}',[EventController::class,'delete'])->name("evenement.delete");
 });

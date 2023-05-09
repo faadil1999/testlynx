@@ -21,7 +21,7 @@ const props = defineProps(['evenements']);
                 <div class="text-4xl" >{{ evenement.title }}</div>
                 <div class="text-sm text-gray-700" >{{ evenement.description }}</div>
                 <div class="text-sm text-gray-700">{{ evenement.date_start }}</div>
-                <a :href="'event/' + evenement.id" class="bg-blue-500 text-white px-2 py-1 text-sm mt-3 inline-block rounded hover:bg-blue-700">Voir evenement</a>
+                <a :href="route('evenement.show',evenement.id)" class="bg-blue-500 text-white px-2 py-1 text-sm mt-3 inline-block rounded hover:bg-blue-700">Voir evenement</a>
             </div>
         </div>
     </app-layout>
