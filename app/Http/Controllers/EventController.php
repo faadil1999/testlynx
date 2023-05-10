@@ -55,6 +55,7 @@ class EventController extends Controller
        return redirect()->route('evenements.index')->with('success','Événement modifier avec succès');
     }
 
+    
     public function delete($id)
     {
         $evenement = Evenement::findOrFail($id);
@@ -62,8 +63,11 @@ class EventController extends Controller
         return redirect()->route('evenements.index')->with('success','Événement supprimer avec succès');
     }
 
+
+    //fonction pour le dateRangePicker
     public function scopeDate(Request $request)
     {
+        
         $evenements = Evenement::dateRange($request)->get();
 
         return Inertia::render('Events/Index',['evenements'=> $evenements]);

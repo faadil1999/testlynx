@@ -26,6 +26,8 @@ const form = reactive({
     range_end : null
 }) 
 
+//cette fonction permet de trouver le decalage. Necessaire pour mettre la fin des dates precedentes dans le nouveau mois
+
 function getDecal(month)
 {
     var decal = [];
@@ -38,41 +40,52 @@ function getDecal(month)
     return decal.reverse();
 }
 
+// permet de prendre le nombre de jour dans le mois
 function getDaysInMonth(month)
 {
     return moment(month,'LL').daysInMonth();
 }
 
+//les fonctions isStart , isEnd et isBetween sont utilisees pour afficher sur le calendrier les dates concernees par l'interval de filtre
+//isStart pour le debut de l'interval
 function isStart(day , month)
 {
     var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
+   
     return  instant === form.range_start
 }
-
+//isEnd pour la fin de l'interval
 function isEnd(day , month)
 {
     var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
     return  instant === form.range_end
 }
 
+//isBetween pour les dates entre le debut et la fin de l'interval
 function isBetween(day , month)
 {
     var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
     return moment(instant).isBetween(form.range_start, form.range_end , undefined ,[])
 }
 
+//les fonctions ci dessous sont utiles pour le range - utile pour le click et le double click (double click pour le debut de linterval et un click pour la fin)
+//borne inferieur de l'interval du range
+
 function addStartDate(day , month){
     var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
+   
     form.range_start = instant
 }
-
+//borne superieur de l'interval du range
 function addEndDate(day , month){
     var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
     form.range_end = instant
 }
-
+//la ligne suivante ne marchera pas si month = October. (Un bug de moment js)
+//  var instant = moment(`${year}-${day}-${month}`, "YYYY DO MMMM").format('YYYY-MM-DD')
 
 function submit(){
+   
    
     var arrayRange = [ form.range_start , form.range_end ] 
     router.get(route('evenement.scope'), arrayRange )
