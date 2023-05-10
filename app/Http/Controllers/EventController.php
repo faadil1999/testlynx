@@ -65,7 +65,7 @@ class EventController extends Controller
 
 
     //fonction pour le dateRangePicker
-    public function scopeDate(Request $request)
+    public function search(Request $request)
     {
         
         $evenements = Evenement::dateRange($request)->get();
