@@ -37,7 +37,7 @@ class EventController extends Controller
         Evenement::create($request->all());
         return redirect()->route('evenements.index')->with('success','Événement créé avec succès');
     }
-
+//la fonction permettant davoir acces a levenement que nous souhaitons modifier
     public function edit($id)
     {
      
@@ -46,7 +46,7 @@ class EventController extends Controller
         return Inertia::render('Events/Edit',['evenement'=> $evenement]);
 
     }
-
+//Cette fonction prend une requête (request) contenant les nouvelles données qui seront modifiées.
     public function update(PostPutEventRequest $request,$id)
     {
        $evenement = Evenement::findOrFail($id);

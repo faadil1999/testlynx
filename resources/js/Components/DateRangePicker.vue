@@ -98,7 +98,7 @@ function submit(){
     <div>
         <h3>Calendrier {{ year }}</h3>
         <div class="grid grid-cols-4">    
-            <div class="rangepicker_month" v-for="month in months" :key="month" >
+            <div  v-for="month in months" :key="month" >
                 
                 <div class="text-red-700 text-center bg-gray-400 px-auto w-60"> 
                     {{ month }} 
@@ -119,11 +119,7 @@ function submit(){
                         </div>
                        
                     </div>
-                    <!-- <div class="grid grid-cols-7  text-black">
-                        <div v-for="dy in getDaysInMonth(month)" :key="dy">
-                            <a href="">{{ dy }}</a>
-                        </div>
-                    </div> -->
+                
                     
                     
                 </div>
