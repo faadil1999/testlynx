@@ -9,11 +9,52 @@
 
 ## LynxEventTest
 Il s'agit d'un programme réalisé en Laravel et Inertia.js qui permet d'ajouter, de modifier, de supprimer et de filtrer des événements.
-
-Pour l'installer, vous devez cloner le référentiel Git, puis exécuter la commande "composer install". Assurez-vous d'avoir préalablement installé Moment.js et Inertia.js.
-
-Les principales fonctions pour le CRUD se trouvent dans le contrôleur EventController. Un scope a été créé dans le modèle "Événement" pour effectuer le filtrage. Pour lancer le projet, vous devez effectuer la migration de la base de données en exécutant la commande "php artisan migrate". Ensuite, lancez le serveur en utilisant la commande "php artisan serve". Enfin, pour compiler les ressources JavaScript, exécutez "npm run dev".
-
-Un composant "DateRangePicker" a été créé parmi les composants Vue. Ce composant est utilisé dans le fichier Index.vue.
-
+Les principales fonctions pour le CRUD se trouvent dans le contrôleur `EventController`. Un scope a été créé dans le modèle `Evenement` pour effectuer le filtrage. 
+Un composant `DateRangePicker` a été créé parmi les composants Vue. Ce composant est utilisé dans le fichier Index.vue.
 Grâce à ce composant, vous pourrez trier les événements en fonction de la date de leur début.
+
+## Pour commencer
+S'assurer vous d'avoir des extension sur votre visual studio telles que Laravel blade formatter, vue 3 snippets, Moment.js snippets
+Cloner le référentiel Git en faisant: git clone [url_https]
+```
+git clone [url_https]
+```
+Copier les elements du fichier `.env.example` dans un fichier `.env` que vous créez
+### Pré-requis
+
+Ce qu'il est requis pour commencer avec ce projet
+
+- Php 8
+- Composer
+- Node js (npm)
+- phpMyAdmin
+
+### Installation
+Dans votre terminal, vous vous situez a la racine du projet et vous exécutez la commande 
+```
+composer install
+```
+en suite vous faites
+```
+php artisan key:generate
+```
+en suite vous faites
+```
+npm install
+```
+## Démarrage
+Pour demarrer le projet il faut d'abord faire la migration du projet en faisant
+```
+php artisan migrate
+```
+Il faut s'assurer au préalable d'avoir modifié le nom de la base de données dans le fichier `.env` en modifiant la variable `DB_DATABASE`.
+Ensuite, lancez le serveur en utilisant la commande 
+```
+php artisan serve
+```
+Enfin, pour compiler les ressources JavaScript, exécutez 
+```
+npm run dev
+```
+
+
